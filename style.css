@@ -1,0 +1,143 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color:#f3f3f3;
+    font-family: Arial, sans-serif;
+}
+
+.navbar{
+    background-color: #2f3d4f;
+    height:60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index:2;
+    position: fixed;
+    width: 100%;
+}
+
+.navbar__brand img{
+    width:90px;
+    height:70px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+ .navbar__search{
+     width: 60%;
+     position: relative;
+ }
+ 
+ .navbar__search__input{
+     width: 100%;
+     border:none;
+     outline: none;
+     border-radius: 50px;
+     padding: 5px;
+     padding-left: 34px;
+     font-size: 16px;
+     font-weight: bolder;
+ }
+
+ .navbar__search__input::placeholder{
+     color:#2f3d4f;
+ }
+
+ .navbar__search__input__icon{
+    color:#aebb3f;
+    position:absolute;
+    left: 0;
+    top:5px;
+    padding: 0px 0px 0px 10px;
+
+ }
+ 
+.navbar__user{
+    padding: 10px;
+    color: #ffffff;
+}
+    
+.content{
+    display:flex;
+        
+}
+
+.content__sidebar{
+    width:200px;
+    height: calc(100vh - 60px);
+    padding: 10px 0;
+    box-shadow: 2px 0px 4px 4px rgba(219,216,219,1);
+    font-size: 20px;
+    background-color:#ffffff;
+    z-index:1;
+    margin-top: 60px;
+    position: fixed;
+    color:#87868c;
+}
+
+.content__sidebar__list__item{
+    padding: 5px 10px;
+    margin: 10px;
+    
+}
+
+.content__sidebar__list__item:hover{
+    color:#aebb3f;
+    cursor: pointer;
+}
+
+.content__main{
+    width: 100%;
+    padding: 30px;
+    margin-left: 200px;
+    margin-top: 60px;    
+}
+
+.content__main__list{
+    width: 80%;
+    margin:0 auto;
+    padding: 0px;
+    list-style-type: none;
+    box-shadow: 0px 1px 4px 4px rgba(219,216,219,1);
+    border-radius: 5px;
+    color:#87868c;
+}
+
+.content__main__list__row{
+    border-bottom:1px solid rgba(219,216,219,1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px;
+    flex-flow: row nowrap;
+}
+.content__main__list__row__users{
+    
+}
+
+.content__main__list__row:last-child{
+    border-bottom: none;
+}
+
+.content__main__list__row__name{
+    font-size: 20px;
+    color:#2f3d4f;
+    font-weight: bolder;
+}
+
+.content__main__list__row__photo{
+    width: 45px;
+    border-radius: 50px;
+}
+
+.content__main__list__row__icons__itens{
+    width: 30px;
+    cursor: pointer;
+}
+
+
+
+
