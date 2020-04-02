@@ -1,5 +1,5 @@
-const listElemet = document.querySelector(".content__main");
-const inputElement = document.querySelector(".navbar__search__input");
+const inputElement = document.querySelector("#user__search");
+const listElemet = document.querySelector("#render__main");
 
 function userListRender(userList) {
     const list  =   `
@@ -33,10 +33,10 @@ function search() {
 }
 
 function filterUsersBySearchValue(searchValue) {
-  return users.filter(
-    item => item.name.toLowerCase().indexOf(searchValue) !== -1
+  return users.filter(item =>
+    item.name.toLowerCase().indexOf(searchValue) !== -1
   );
-}
+  }
 
 userListRender(users);
 search();
