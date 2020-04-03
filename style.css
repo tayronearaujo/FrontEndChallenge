@@ -19,7 +19,7 @@ body{
     width: 100%;
 }
 
-.navbar__brand img{
+.navbar__brand__img{
     width:90px;
     height:70px;
     margin-left:auto;
@@ -97,7 +97,7 @@ body{
 }
 
 .content__main__list{
-    width: 95%;
+    width: 90%;
     margin:0 auto;
     padding: 0px;
     list-style-type: none;
@@ -109,12 +109,16 @@ body{
 .content__main__list__row{
     border-bottom:1px solid rgba(219,216,219,1);
     display: flex;
+    flex: 30;
     justify-content: space-between;
     align-items: center;
     padding:10px;
 }
-.content__main__list__row div{
+.content__main__list__row_user{
+    width: 40%;
+    padding: 5px;
 }  
+
 .content__main__list__row:last-child{
     border-bottom: none;
 }
