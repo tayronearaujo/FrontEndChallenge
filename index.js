@@ -1,6 +1,8 @@
 const inputElement = document.querySelector("#user__search");
 const listElemet = document.querySelector("#user-list");
 
+//const trashButton = document.getElementById("#icon-trash");
+
 function userListRender(userList) {
     const list  =   `
         <ul class="content__main__list">
@@ -13,9 +15,9 @@ function userListRender(userList) {
                     <div class="content__main__list__row_user">${user.phone}</div>
                     <div class="content__main__list__row_user">${user.city}</div>
                     <div class="content__main__list__row_user">
-                        <i class="fas fa-trash content__main__list__row__icons__itens"></i>   
-                        <i class="fas fa-th content__main__list__row__icons__itens"></i>  
-                        <i class="fas fa-check content__main__list__row__icons__itens"></i>  
+                        <i id="icon-trash" class="fas fa-trash content__main__list__row__icons__itens "></i>   
+                        <i id="icon-all" class="fas fa-th content__main__list__row__icons__itens"></i>  
+                        <i id="icon-attended" class="fas fa-check content__main__list__row__icons__itens"></i>  
                     </div>
                 </li>                   
             `
@@ -34,9 +36,16 @@ function search() {
 
 function filterUsersBySearchValue(searchValue) {
   return users.filter(item =>
-    item.name.toLowerCase().indexOf(searchValue) !== -1
+    item.name.toLowerCase().indexOf(searchValue) !== -1 || item.email.toLowerCase().indexOf(searchValue) !== -1
   );
 }
 
+function sendUserTrash(){
+  
+  
+}
+
+
+sendUserTrash();
 userListRender(users);
 search();
