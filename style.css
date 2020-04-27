@@ -20,8 +20,8 @@ body{
 }
 
 .navbar__brand__img{
-    width:90px;
-    height:70px;
+    width:100px;
+    height:95px;
     margin-left:auto;
     margin-right:auto;
 }
@@ -127,6 +127,7 @@ body{
     font-size: 20px;
     color:#2f3d4f;
     font-weight: bolder;
+    text-decoration:none;
 }
 
 .content__main__list__row__photo{

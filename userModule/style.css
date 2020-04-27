@@ -5,6 +5,7 @@
 
 body{
     background-color:#f2f2f2;
+    font-family: Arial, sans-serif;
 }
 
 .content{
@@ -13,16 +14,19 @@ body{
     background-color: #2f3d4f;
     position:fixed;
 }
-
+.content__left{
+    color: #f1f1f1;
+    padding: 15px;
+}
 .content__main__user{
-    width: 650px;
+    width: 670px;
     height:500px;
     border-radius:5px;
     background-color: #ffff;
     margin:0 auto;
     margin-top: 100px;
     padding: 0px;
-    position: relative;
+    
     box-shadow: 0px 1px 4px 4px rgba(219,216,219,1);
 }
 
@@ -31,37 +35,62 @@ body{
     height:135px;
     background-color:#f3f3f3;
     border-bottom: 1px solid #bebebe;
+    display: flex;
+    align-items: center;
 }
    
 .content__main__user__details__photo{
-    width: 150px;
-    height: 150px;
+    width: 190px;
+    height: 190px;
     margin:0 auto;
-    margin-top:60px;
+    margin-top:130px;
     padding: 2px;
-    border-radius: 80px;
+    border-radius: 100px;
     border: 1px solid #bebebe;
-    position: absolute;
+   
 }
 
 .content__main__user__information{
-    width: 400px;
+    width: 300px;
     margin:0 auto;
-    margin-top:200px;
+    
+}
+
+.content__main__user__information__data{
+    width: 300px;
+    padding: 10px;
+    margin:0 auto;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+}
+
+.content__main__user__information__data__letter{
+    color:#b4b4b4;
+    font-size: 20px;
+}
+
+.content__main__user__information__data__letter__name{
+    color:#2f3d4f;
+    font-size: 35px;
+    font-weight: bolder;
 }
 .content__main__user__information__row{
+    margin-top: 80px;
     list-style-type: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding:5px;
-
+    
 }
 .content__main__user__information__row__icons{
-    color:#bebebe;
+    color:#b4b4b4;
 }
 
 .content__main__user__information__row__icons__itens:hover{
     color:#aebb3f;
     cursor: pointer;
 }
+
