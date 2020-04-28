@@ -1,15 +1,17 @@
 const inputElement = document.querySelector("#user__search");
 const listElemet = document.querySelector("#user__list");
-const nameElement = document.querySelector("#user__name");
+const listAllElement = document.querySelector("#list__all");
+const listAttended = document.querySelector("#list__attended");
+const listTrash = document.querySelector("#list__thash");
 
 
-
+//const nameElement = document.querySelector("#user__name");
 //const trashButton = document.getElementById("#icon-trash");
 
 
 
 function userListRender(userList) {
-    const list  =   `
+    const list  = `
         <ul class="content__main__list">
             ${userList.map(user =>
             `
@@ -20,9 +22,9 @@ function userListRender(userList) {
                     <div class="content__main__list__row_user">${user.phone}</div>
                     <div class="content__main__list__row_user">${user.city}</div>
                     <div class="content__main__list__row_user">
-                        <i id="icon-trash" class="fas fa-trash content__main__list__row__icons__itens "></i>   
-                        <i id="icon-all" class="fas fa-th content__main__list__row__icons__itens"></i>  
-                        <i id="icon-attended" class="fas fa-check content__main__list__row__icons__itens"></i>  
+                        <i class="fas fa-trash content__main__list__row__icons__itens" onclick="sendUserTrash('${user.name}')"></i>   
+                        <i class="fas fa-th content__main__list__row__icons__itens" onclick="alert('clicou todos')"></i>  
+                        <i class="fas fa-check content__main__list__row__icons__itens" onclick="alert('${user.id}')"></i>  
                     </div>
                 </li>                   
             `
@@ -32,16 +34,22 @@ function userListRender(userList) {
     listElemet.innerHTML = list;
 }
 
+function changeList(){
+  listAllElement.addEventListener("click", event =>{
+    alert();
+  });
+  listAttended.addEventListener("click", event =>{
+    alert();
+  });
+  listTrash.addEventListener("click", event =>{
+    alert();
+  });
+}
+
 function search() {
   inputElement.addEventListener("input", event =>{
     let value = event.target.value.toLowerCase();
     userListRender(filterUsersBySearchValue(value));
-  });
-}
-
-function searchUserById(){
-  nameElement.addEventListener("mouseover", event =>{
-    let idOfName = event.target.value;
   });
 }
 
@@ -51,14 +59,16 @@ function filterUsersBySearchValue(searchValue) {
   );
 }
 
-function sendUserTrash(){
-  let trash = []
+function sendUserTrash(userName){
+  let arrTrash = ["dolor","ipsum"];
+  arrTrash.push(userName);
   
-  
+  console.log(arrTrash);
 
+  arrTrash.map(user => {
+    console.log('xxx') ; 
+    userListRender(filterUsersBySearchValue(userName))});
 }
-
-
 
 
 userListRender(users);
