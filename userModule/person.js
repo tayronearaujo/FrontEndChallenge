@@ -1,3 +1,4 @@
+const urlParams = window.location.href;
 const userInfo = document.querySelector("#content-user");
 const userPhoto = document.querySelector("#user-img");
 const iconUser = document.querySelector("#info-user");
@@ -8,11 +9,18 @@ const iconPhone = document.querySelector("#info-phone");
 const iconPassword = document.querySelector("#info-password");
 
 
+function getParameters(){
+    let url = new URL(urlParams);
+    let id = url.searchParams.get("id");
+    
+    return  parseInt(id);
+}
+
 function renderUser(userList){
 
-    let user = userList.find(user => user.id === 2);
-
-
+    let id = getParameters();
+    
+    let user = userList.find(user => user.id === id);
 
     userPhoto.innerHTML = `<img class="content__main__user__details__photo" src="${user.photo}">; `
 
@@ -23,15 +31,13 @@ function renderUser(userList){
         userInfo.innerHTML = userName;
     });
 
-    
     iconMail.addEventListener("mouseenter", event =>{
         let userMail = ` 
-        <label class="content__main__user__information__data__letter">Hi, My email address is <br> <label class="content__main__user__information__data__letter__name">${user.email}</label></label>
+        <label class="content__main__user__information__data__letter">My email address is <br> <label class="content__main__user__information__data__letter__name">${user.email}</label></label>
         `
         userInfo.innerHTML = userMail;
     });
 
-    
     iconDate.addEventListener("mouseenter", event =>{
         let userDate = ` 
         <label class="content__main__user__information__data__letter">My birthday is <br> <label class="content__main__user__information__data__letter__name">${user.date}</label></label>
@@ -39,7 +45,6 @@ function renderUser(userList){
         userInfo.innerHTML = userDate;
     });
 
-    
     iconAddress.addEventListener("mouseenter", event =>{
         let userAdress = ` 
         <label class="content__main__user__information__data__letter">My addres is <br> <label class="content__main__user__information__data__letter__name">${user.address}</label></label>
@@ -62,6 +67,6 @@ function renderUser(userList){
     });
     
 }
+
 renderUser(users);
-
-
+getParameters();
