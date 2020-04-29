@@ -7,6 +7,12 @@ const listTrash = document.querySelector("#list__thash");
 //const nameElement = document.querySelector("#user__name");
 //const trashButton = document.getElementById("#icon-trash");
 
+//const arrTrash = JSON.parse(localStorage.getItem('list'));
+
+const arrTrash = [];
+
+
+
 function userListRender(userList) {
     const list  = `
         <ul class="content__main__list">
@@ -19,7 +25,7 @@ function userListRender(userList) {
                     <div class="content__main__list__row_user">${user.phone}</div>
                     <div class="content__main__list__row_user">${user.city}</div>
                     <div class="content__main__list__row_user">
-                        <i class="fas fa-trash content__main__list__row__icons__itens" onclick="sendUserTrash('${user.name}')"></i>   
+                        <i class="fas fa-trash content__main__list__row__icons__itens" onclick="sendUserTrash('${JSON.stringify(user).split('"').join("&quot;")}')"></i>   
                         <i class="fas fa-th content__main__list__row__icons__itens" onclick="alert('clicou todos')"></i>  
                         <i class="fas fa-check content__main__list__row__icons__itens" onclick="alert('${user.id}')"></i>  
                     </div>
@@ -32,13 +38,13 @@ function userListRender(userList) {
 }
 function changeList(){
   listAllElement.addEventListener("click", event =>{
-    alert();
+    userListRender(users);
   });
   listAttended.addEventListener("click", event =>{
     alert();
   });
   listTrash.addEventListener("click", event =>{
-    alert();
+    renderTrash();
   });
 }
 
@@ -55,18 +61,21 @@ function filterUsersBySearchValue(searchValue) {
   );
 }
 
-function sendUserTrash(userName){
-  let arrTrash = ["dolor","ipsum"];
-  arrTrash.push(userName);
-  
-  console.log(arrTrash);
-  
-  arrTrash.map(user => {
-    console.log('xxx'); 
-    userListRender(filterUsersBySearchValue(userName));
-  });
+function sendUserTrash(userData){
+  arrTrash.push(userData);
+  saveToStorage();
+  console.log(userData);
+
 }
 
+function renderTrash(){
+  //let teste = JSON.parse(arrTrash)
+  //userListRender(arrTrash);
+}
+
+function saveToStorage(){
+  localStorage.setItem('list', JSON.stringify(arrTrash));
+}
 
 userListRender(users);
 search();

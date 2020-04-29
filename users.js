@@ -98,5 +98,5 @@ const users = [
       address:"3641 California St",
       city: "São Paulo - SP",
       password: 1111110
-    },
+    }
   ];
