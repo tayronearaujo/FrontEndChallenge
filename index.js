@@ -4,11 +4,8 @@ const listAllElement = document.querySelector("#list__all");
 const listAttended = document.querySelector("#list__attended");
 const listTrash = document.querySelector("#list__thash");
 
-
 //const nameElement = document.querySelector("#user__name");
 //const trashButton = document.getElementById("#icon-trash");
-
-
 
 function userListRender(userList) {
     const list  = `
@@ -33,7 +30,6 @@ function userListRender(userList) {
     `;
     listElemet.innerHTML = list;
 }
-
 function changeList(){
   listAllElement.addEventListener("click", event =>{
     alert();
@@ -64,10 +60,11 @@ function sendUserTrash(userName){
   arrTrash.push(userName);
   
   console.log(arrTrash);
-
+  
   arrTrash.map(user => {
-    console.log('xxx') ; 
-    userListRender(filterUsersBySearchValue(userName))});
+    console.log('xxx'); 
+    userListRender(filterUsersBySearchValue(userName));
+  });
 }
 
 

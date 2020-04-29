@@ -14,20 +14,27 @@ body{
     background-color: #2f3d4f;
     position:fixed;
 }
+
 .content__left{
     color: #f1f1f1;
     padding: 15px;
     
 }
+
+.content__left__link{
+    text-decoration: none;
+    
+}
+
 .content__main__user{
     width: 670px;
     height:500px;
     border-radius:5px;
     background-color: #ffff;
     margin:0 auto;
-    margin-top: 100px;
+    margin-top: 45px;
     padding: 0px;
-    box-shadow: 0px 1px 4px 4px rgba(219,216,219,1);
+    box-shadow: 1px 1px 5px 3px rgba(165,165,165,0.37);
 }
 
 .content__main__user__details{
@@ -35,6 +42,7 @@ body{
     height:135px;
     background-color:#f3f3f3;
     border-bottom: 1px solid #bebebe;
+    border-radius:5px;
     display: flex;
     align-items: center;
 }
@@ -53,38 +61,39 @@ body{
     width: 300px;
     margin:0 auto;
 }
+
 .content__main__user__information__data{
-    width: 300px;
-    padding: 10px;
+    width:450px;
+    height:60px;
+    padding:15px;
     margin:0 auto;
-    margin-top: 100px;
+    margin-top:110px;
     display: flex;
     justify-content: center;
-    text-align: justify;
 }
 
 .content__main__user__information__data__letter{
     color:#b4b4b4;
     font-size: 20px;
+    padding: 5px;
+    text-align: center;
 }
 
 .content__main__user__information__data__letter__name{
-    color:#2f3d4f;
+    color:#525252;
     font-size: 35px;
-    font-weight: bolder;
-    
+    font-weight: bold;
 }
 
-
 .content__main__user__information__row{
-    margin-top: 80px;
+    width:400px;
+    margin:0 auto;    
+    margin-top: 40px;   
     list-style-type: none;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding:5px;
-    
 }
+
 .content__main__user__information__row__icons{
     color:#b4b4b4;
 }
@@ -93,4 +102,5 @@ body{
     color:#aebb3f;
     cursor: pointer;
 }
+
 
