@@ -57,14 +57,14 @@ function filterUsersBySearchValue(searchValue) {
 
 function sendUserTrash(userData){
   arrTrash.push(userData);
-  saveToStorage('list-Attended', arrTrash);
-  //console.log(userData);
+  saveToStorage('list-trash', arrTrash);
+  console.log(userData);
 }
 
 function sendUserAttend(userData){
   arrAttended.push(userData);
-  saveToStorage('list-trash', arrTrash);
-  //console.log(userData);
+  saveToStorage('list-Attended', arrAttended);
+  console.log(userData);
 }
 
 function renderTrash(){
