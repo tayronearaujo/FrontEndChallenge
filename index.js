@@ -1,16 +1,15 @@
 const inputElement = document.querySelector("#user__search");
 const listElemet = document.querySelector("#user__list");
 const listAllElement = document.querySelector("#list__all");
-const listAttended = document.querySelector("#list__attended");
-const listTrash = document.querySelector("#list__thash");
 
 //const nameElement = document.querySelector("#user__name");
 //const trashButton = document.getElementById("#icon-trash");
 
-//const arrTrash = JSON.parse(localStorage.getItem('list'));
+//const arrTrash = JSON.parse(window.localStorage.getItem('list-trash'));
+
 
 const arrTrash = [];
-
+const arrAttended = [];
 
 
 function userListRender(userList) {
@@ -27,7 +26,7 @@ function userListRender(userList) {
                     <div class="content__main__list__row_user">
                         <i class="fas fa-trash content__main__list__row__icons__itens" onclick="sendUserTrash('${JSON.stringify(user).split('"').join("&quot;")}')"></i>   
                         <i class="fas fa-th content__main__list__row__icons__itens" onclick="alert('clicou todos')"></i>  
-                        <i class="fas fa-check content__main__list__row__icons__itens" onclick="alert('${user.id}')"></i>  
+                        <i class="fas fa-check content__main__list__row__icons__itens" onclick="sendUserAttend('${JSON.stringify(user).split('"').join("&quot;")}')"></i>  
                     </div>
                 </li>                   
             `
@@ -36,15 +35,10 @@ function userListRender(userList) {
     `;
     listElemet.innerHTML = list;
 }
+
 function changeList(){
   listAllElement.addEventListener("click", event =>{
     userListRender(users);
-  });
-  listAttended.addEventListener("click", event =>{
-    alert();
-  });
-  listTrash.addEventListener("click", event =>{
-    renderTrash();
   });
 }
 
@@ -63,18 +57,32 @@ function filterUsersBySearchValue(searchValue) {
 
 function sendUserTrash(userData){
   arrTrash.push(userData);
-  saveToStorage();
-  console.log(userData);
+  saveToStorage('list-Attended', arrTrash);
+  //console.log(userData);
+}
 
+function sendUserAttend(userData){
+  arrAttended.push(userData);
+  saveToStorage('list-trash', arrTrash);
+  //console.log(userData);
 }
 
 function renderTrash(){
-  //let teste = JSON.parse(arrTrash)
-  //userListRender(arrTrash);
+  const user = getToStorage('list-trash');
+  userListRender(user);
 }
 
-function saveToStorage(){
-  localStorage.setItem('list', JSON.stringify(arrTrash));
+function renderAttended(){
+  const user = getToStorage('list-attended');
+  userListRender(user);
+}
+
+function saveToStorage(item, data){
+  window.localStorage.setItem(item, JSON.stringify(data));
+}
+
+function getToStorage(item){
+  return JSON.parse(window.localStorage.getItem(item));
 }
 
 userListRender(users);
