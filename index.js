@@ -56,33 +56,44 @@ function filterUsersBySearchValue(searchValue) {
 }
 
 function sendUserTrash(userData){
-  arrTrash.push(userData);
+  
+  arrTrash.push(JSON.parse(userData));
   saveToStorage('list-trash', arrTrash);
   console.log(userData);
+  
+  /*
+  const userObject = JSON.parse(userData);
+  const checkId = arrTrash.find(user => user.id === userObject.id);
+    console.log(checkId);
+  if (checkId == false){
+     }else{
+    return alert("Usuário já esta na lista");
+  }
+*/
 }
 
 function sendUserAttend(userData){
-  arrAttended.push(userData);
-  saveToStorage('list-Attended', arrAttended);
+  arrAttended.push(JSON.parse(userData));
+  saveToStorage('list-attended', arrAttended);
   console.log(userData);
 }
 
 function renderTrash(){
-  const user = getToStorage('list-trash');
-  userListRender(user);
+  const userTrash = getToStorage('list-trash');
+  userListRender(userTrash);
 }
 
 function renderAttended(){
-  const user = getToStorage('list-attended');
-  userListRender(user);
+  const userAttended = getToStorage('list-attended');
+  userListRender(userAttended);
 }
 
 function saveToStorage(item, data){
-  window.localStorage.setItem(item, JSON.stringify(data));
+  localStorage.setItem(item, JSON.stringify(data));
 }
 
 function getToStorage(item){
-  return JSON.parse(window.localStorage.getItem(item));
+  return JSON.parse(localStorage.getItem(item));
 }
 
 userListRender(users);

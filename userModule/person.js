@@ -19,7 +19,6 @@ function getParameters(){
 function renderUser(userList){
 
     let id = getParameters();
-    
     let user = userList.find(user => user.id === id);
 
     userPhoto.innerHTML = `<img class="content__main__user__details__photo" src="${user.photo}">; `
