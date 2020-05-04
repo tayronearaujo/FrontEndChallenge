@@ -65,7 +65,7 @@ body{
 
 .content__sidebar{
     width:170px;
-    height: calc(100vh - 60px);
+    height: 100%;
     padding: 10px 0;
     box-shadow: 2px 0px 4px 4px rgba(219,216,219,1);
     font-size: 20px;
@@ -107,7 +107,7 @@ body{
 .content__main__list__row{
     border-bottom:1px solid rgba(219,216,219,1);
     display: flex;
-    flex: 30;
+    flex: 1;
     justify-content: space-between;
     align-items: center;
     padding:10px;
@@ -144,6 +144,61 @@ body{
     cursor: pointer;
 }
 
+/* Telefones em paisagem a tablet em retrato */
+@media (max-width: 767px) {
+    /* Inicio Estilos navbar */
+    .navbar{
+        flex-wrap: wrap;
+        height: auto;
+        position: initial;
+    }
+    .navbar__brand__img{
+        flex:1;
+        width:90px;
+        height:85px;
+        margin-left:5px;
+        margin-right:5px;
+    }
+    .navbar__user{
+        flex: 1;
+        display: flex;
+        justify-content:flex-end;
+    }
+    .navbar__search{
+        width: 95%;
+        margin:0 auto;
+        margin-bottom: 10px;
+    }
+    .navbar__search__input{
+        flex:1;
+    }
+    /* Fim Estilos navbar */
 
+    /* Inicio Estilos content*/
+    .content__main{
+        width: 90%;
+        margin-left: 0px;
+    }
 
+    .content__main__list{
+        width: 100%;
+        padding: 5px;
+    }
+    .content__main__list__row{
+        display:table-row;
+        
+    }
+    .content__main__list__row_user{
+        width: 60%;
+    }  
+    .content__main__list__row__photo{
+        display: none;
+    }
+    /* Fim Estilos content*/
 
+    /*Inicio estilo sideBar*/
+    .content__sidebar{
+        display: none;
+    }
+
+}
