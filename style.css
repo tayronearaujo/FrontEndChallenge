@@ -122,9 +122,15 @@ body{
 }
 
 .content__main__list__row__name{
-    font-size: 20px;
+    font-size: 25px;  
+}
+
+.content__main__list__row_user__link{
+    text-decoration:none;
     color:#2f3d4f;
-    font-weight: bolder;
+}
+
+.content__main__list__row_user__link:visited{
     text-decoration:none;
 }
 

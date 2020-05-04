@@ -5,7 +5,7 @@
 
 body{
     background-color:#f2f2f2;
-    font-family: Arial, sans-serif;
+    font-family: Helvetica, sans-serif;
 }
 
 .content{
@@ -16,14 +16,12 @@ body{
 }
 
 .content__left{
-    color: #f1f1f1;
-    padding: 15px;
-    
+    padding: 15px;   
 }
 
 .content__left__link{
     text-decoration: none;
-
+    color: #f1f1f1;
 }
 
 .content__main__user{
@@ -81,7 +79,7 @@ body{
 
 .content__main__user__information__data__letter__name{
     color:#525252;
-    font-size: 35px;
+    font-size: 33px;
     font-weight: bold;
 }
 

@@ -2,7 +2,7 @@ const users = [
     {
       id:1,
       photo: "https://randomuser.me/api/portraits/women/90.jpg",
-      name: "Lorraine Beck",
+      name: "Lorraine",
       email: "lorraine.beck22@example.com",
       date: "27/04/2020",
       phone: "(960)-861-1890",
