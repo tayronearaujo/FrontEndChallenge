@@ -9,6 +9,7 @@
     </head>
     <body>
         <nav class="navbar">
+            <a hidden id="sideBar__icon" class="navbar__mobile" onclick="openNavbar()"> <i class="fas fa-align-justify fa-2x"></i></a>
             <a class="navbar__brand"> <img src="./img/zup_brand.png" class="navbar__brand__img"></a>
             <div class="navbar__search">
                 <input id="user__search" class="navbar__search__input" type="search" placeholder="Buscar">
@@ -17,7 +18,7 @@
             <a class="navbar__user"> <i class="fas fa-user-circle fa-2x"></i> </a>
         </nav>
         <div class="content">
-            <div class="content__sidebar">
+            <div id="sideBrar" class="content__sidebar">
                 <ul class="content__sidebar__list">
                     <li id="list__all" class="content__sidebar__list__item" onclick="changeList()"> <i
                         class="fas fa-th content__main__list__row__icons__itens"></i>Todos </li>
