@@ -79,7 +79,6 @@ body{
 .content__sidebar__list__item{
     padding: 5px 10px;
     margin: 10px;
-    
 }
 
 .content__sidebar__list__item:hover{
@@ -148,36 +147,35 @@ body{
 @media (max-width: 767px) {
     /* Inicio Estilos navbar */
     .navbar{
-        flex-wrap: wrap;
         height: auto;
         position: fixed;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
     .navbar__mobile{
         display: block;
-        flex:1;
         color: #ffffff;
         margin: 5px;
     }
     .navbar__brand__img{
-     
         width:90px;
         height:85px;
         margin-left:5px;
         margin-right:5px;
     }
+
     .navbar__user{
-        flex: 1;
-        display: flex;
-        justify-content:flex-end;
-        
+        float: left;
     }
+
     .navbar__search{
-        width: 95%;
+        /*width: 95%;*/
         margin:0 auto;
         margin-bottom: 10px;
     }
     .navbar__search__input{
-        flex:1;
+        
     }
     /* Fim Estilos navbar */
 
@@ -212,7 +210,71 @@ body{
     /*Inicio estilo sideBar*/
     .content__sidebar{
         display: none;
+        width: 90%;
+        height: 100px;
+        margin: 0 auto;
+        margin-top: 150px;
+        position: absolute;
+       
+    }
+    .content__sidebar__list__item{
+        padding: 5px 10px;
+        margin: 10px;
         
     }
 
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    
+    /* Inicio Estilos content*/
+    .content__main{
+        width: 90%;
+        margin-left: 180px;
+        position: relative;
+        padding: 10px;
+    }
+    .content__main__list{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .content__main__list__row{
+        width:100%;
+        padding:3px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 50px  120px 140px 120px 120px 120px;
+    }
+    .content__main__list__row_user{
+        width: 100%;
+        padding: 3px;
+    }  
+    .content__main__list__row__photo{
+        width: 35px;
+      }
+
+}
+
+@media(min-width: 1200px) {
+
+    /* Inicio Estilos content*/
+    .content__main{
+        position: relative;
+        padding: 10px;
+    }
+    .content__main__list{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .content__main__list__row{
+        width:100%;
+        padding:10px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 70px  120px 140px 120px 120px 130px;
+    }
+    .content__main__list__row_user{
+        width: 100%;
+        padding: 3px;
+    }  
+   
 }
