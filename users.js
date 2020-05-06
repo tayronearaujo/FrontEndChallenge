@@ -29,7 +29,7 @@ const users = [
       date: "27/04/2020",
       phone: "(960)-861-1890",
       address:"3641 California St",
-      city: "São Paulo - SP",
+      city: "São Paulo-SP",
       password: 10111
     },
     {
@@ -51,7 +51,7 @@ const users = [
       date: "27/04/2020",
       phone: "(960)-861-1890",
       address:"3641 California St",
-      city: "São Paulo - SP",
+      city: "São Paulo-SP",
       password: 111011
     },
     {
@@ -62,7 +62,7 @@ const users = [
       date: "27/04/2020",
       phone: "(960)-861-1890",
       address:"3641 California St",
-      city: "São Paulo - SP",
+      city: "São Paulo-SP",
       password: 1110101
 
     },
@@ -96,7 +96,7 @@ const users = [
       date: "27/04/2020",
       phone: "(960)-861-1890",
       address:"3641 California St",
-      city: "São Paulo - SP",
+      city: "São Paulo-SP",
       password: 1111110
     }
   ];

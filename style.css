@@ -75,6 +75,9 @@ body{
     position: fixed;
     color:#87868c;
 }
+.content__sidebar__list{
+    
+}
 
 .content__sidebar__list__item{
     padding: 5px 10px;
@@ -150,7 +153,6 @@ body{
         height: auto;
         position: fixed;
         display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
     }
     .navbar__mobile{
@@ -164,33 +166,26 @@ body{
         margin-left:5px;
         margin-right:5px;
     }
-    .navbar__user{
-     
-    }
-
     .navbar__search{
-        /*width: 95%;*/
+        width: 95%;
         margin:0 auto;
         margin-bottom: 10px;
     }
-    .navbar__search__input{
-        
-    }
+
     /* Fim Estilos navbar */
 
     /* Inicio Estilos content*/
     .content__main{
         width: 90%;
         margin-left: 0px;
+        margin-top: 0px;
         position: relative;
         padding: 20px;
     }
-
     .content__main__list{
         width: 100%;
         margin: 0 auto;
-        margin-top: 130px;
-        
+        margin-top: 130px;  
     }
     .content__main__list__row{
         display:table;
@@ -210,18 +205,18 @@ body{
     .content__sidebar{
         display: none;
         width: 90%;
-        height: 100px;
+        height: 130px;
         margin: 0 auto;
-        margin-top: 150px;
+        margin-top: 90px;
         position: absolute;
-       
+    }
+    .content__sidebar__list{
+        list-style-type: none;
     }
     .content__sidebar__list__item{
         padding: 5px 10px;
         margin: 10px;
-        
     }
-
 }
 @media (min-width: 768px) and (max-width: 979px) {
     
@@ -241,8 +236,7 @@ body{
         padding:3px;
         display: grid;
         grid-auto-flow: column;
-        grid-auto-columns: 50px  120px 140px 120px 120px 120px;
-      
+        grid-auto-columns: 50px  120px 140px 120px 150px 120px;
     }
     .content__main__list__row_user{
         width: 100%;
@@ -277,7 +271,7 @@ body{
         padding:10px;
         display: grid;
         grid-auto-flow: column;
-        grid-auto-columns: 70px  120px 140px 120px 120px 130px;
+        grid-auto-columns: 70px  120px 225px 120px 150px 130px;
     }
     .content__main__list__row_user{
         width: 100%;

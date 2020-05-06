@@ -3,8 +3,6 @@ const listElemet = document.querySelector("#user__list");
 const listAllElement = document.querySelector("#list__all");
 const sideBarIconEment = document.querySelector("#sideBar__icon");
 const sideBarElement = document.querySelector("#sideBrar");
-//const hideElement = document.querySelector(".all-list-trash");
-
 
 const arrTrash = [];
 const arrAttended = [];
@@ -33,10 +31,14 @@ function userListRender(userList) {
     listElemet.innerHTML = list;
 }
 
-function openNavbar(){
+function openSidebar(){
   sideBarIconEment.addEventListener("click", event =>{
-   sideBarElement.style.display = "block"
- 
+   const showSideBar = sideBarElement.style.display;
+    if (showSideBar != "block"){
+      sideBarElement.style.display = "block";
+   }else{
+      sideBarElement.style.display = "none";
+   }
   });
 }
 
@@ -70,7 +72,7 @@ function sendUserTrash(userData){
   if (checkId === undefined){
     arrTrash.push(userObject);
     saveToStorage('list-trash', arrTrash);
-    console.log(userData);
+   
   }else{
     return alert("Usuário já está na lista");
   }
@@ -91,8 +93,6 @@ function sendUserAttend(userData){
 
 function renderTrash(){
   const userTrash = getToStorage('list-trash');
-  
-  //document.querySelector(".all-list-trash").style.display = "none"
   userListRender(userTrash);
 }
 
