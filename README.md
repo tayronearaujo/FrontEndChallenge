@@ -1,12 +1,11 @@
 # FrontEndChallenge
 
-O projeto tem como finalidade desenvolver uma aplicação para gerenciar pessoas e deverá ser utilizada nos
-navegadores mais recentes do mercado.
+O projeto tem como finalidade desenvolver uma aplicação para gerenciar pessoas e deverá ser utilizada nos navegadores mais recentes do mercado.
 
 
 ## Objetivo
 
- O Propótito do desenvolvimento da aplicação é o aprimoramento nas skills: Html, Css e JavaScript. Por meio de 3 desafios com diferentes 
+ O Propótito do desenvolvimento da aplicação é o aprimoramento nas skills: Html, Css e JavaScript. Por meio de 2 desafios com diferentes 
  requisitos cada um.
  
  
@@ -26,8 +25,6 @@ Especificações
 O sistema deve seguir o layout proposto
 A aplicação deve ser responsiva (mobile, tablet, desktop);
 
-
-## Challenges Iniciados
 
 Desafio 2
 
@@ -49,8 +46,7 @@ Especificações
 O sistema deve seguir o layout proposto
 A aplicação deve ser responsiva (mobile, tablet, desktop);
 
-## Challenges não Iniciados
 
-  Desafio 3
+## Challenges Iniciados
 
-
+--
