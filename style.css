@@ -164,9 +164,8 @@ body{
         margin-left:5px;
         margin-right:5px;
     }
-
     .navbar__user{
-        float: left;
+     
     }
 
     .navbar__search{
@@ -243,18 +242,26 @@ body{
         display: grid;
         grid-auto-flow: column;
         grid-auto-columns: 50px  120px 140px 120px 120px 120px;
+      
     }
     .content__main__list__row_user{
         width: 100%;
         padding: 3px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; 
     }  
     .content__main__list__row__photo{
         width: 35px;
       }
 
+    /* Inicio Estilos SideBar*/    
+    .content__sidebar{
+        width:160px;
+        height: 100%;
+    }
 }
-
-@media(min-width: 1200px) {
+@media(min-width: 980px) {
 
     /* Inicio Estilos content*/
     .content__main{
@@ -275,6 +282,8 @@ body{
     .content__main__list__row_user{
         width: 100%;
         padding: 3px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; 
     }  
-   
 }

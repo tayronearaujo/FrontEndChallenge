@@ -20,7 +20,7 @@ function userListRender(userList) {
                     <div class="content__main__list__row_user">${user.email}</div>
                     <div class="content__main__list__row_user">${user.phone}</div>
                     <div class="content__main__list__row_user">${user.city}</div>
-                    <div class="content__main__list__row_use">
+                    <div class="content__main__list__row_user">
                         <i class="fas fa-trash content__main__list__row__icons__itens all-list-trash" onclick="sendUserTrash('${JSON.stringify(user).split('"').join("&quot;")}')"></i>   
                         <i class="fas fa-th content__main__list__row__icons__itens" onclick="changeList()"></i>  
                         <i class="fas fa-check content__main__list__row__icons__itens" onclick="sendUserAttend('${JSON.stringify(user).split('"').join("&quot;")}')"></i>  
