@@ -102,3 +102,38 @@ body{
 }
 
 
+/* Telefones em paisagem a tablet em retrato */
+@media (max-width: 767px) {
+     /* Inicio Estilos content*/
+    .content__main__user{
+        width: 90%;
+        height: 450px;
+        margin-top: 25px;
+    }
+    .content__main__user__details__photo{
+        width: 150px;
+        height: 150px;
+    }
+    .content__main__user__information__row{
+        width:250px;
+    }
+    .content__main__user__information__data{
+        width:250px;
+        
+    }
+    .content__main__user__information__data__letter{
+        font-size: 14px;
+    }
+    .content__main__user__information__data__letter__name{
+        font-size: 19px;  
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+}
+
+@media(min-width: 980px) {
+
+}
