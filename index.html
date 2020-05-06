@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="PT-br">
+    <!-- início do cabecalho -->
     <head>
         <meta charset="UTF-8">
         <title>Teste FontEnd</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/b775c270a3.js" crossorigin="anonymous"></script>
     </head>
+     <!-- Fim do cabecalho -->
     <body>
         <nav class="navbar">
             <a hidden id="sideBar__icon" class="navbar__mobile" onclick="openSidebar()"> <i class="fas fa-align-justify fa-2x"></i></a>
-            <a class="navbar__brand"> <img src="./img/zup_brand.png" class="navbar__brand__img"></a>
+            <a class="navbar__brand"> <img src="./img/zup_brand.png" class="navbar__brand__img" alt="Logo zup"/></a>
             <div class="navbar__search">
                 <input id="user__search" class="navbar__search__input" type="search" placeholder="Buscar">
                 <i class="fas fa-search navbar__search__input__icon"></i>
             </div>
             <a class="navbar__user"> <i class="fas fa-user-circle fa-2x"></i> </a>
         </nav>
-        <div class="content">
-            <div id="sideBrar" class="content__sidebar">
+        <main class="content">
+            <nav id="sideBrar" class="content__sidebar">
                 <ul class="content__sidebar__list">
                     <li id="list__all" class="content__sidebar__list__item" onclick="changeList()"> <i
                         class="fas fa-th content__main__list__row__icons__itens"></i>Todos </li>
@@ -27,10 +29,10 @@
                     <li id="list__thash" class="content__sidebar__list__item"  onclick="renderTrash()"><i
                         class="fas fa-trash content__main__list__row__icons__itens"></i>Lixeira</li>
                 </ul>
-            </div>
-            <div id ="user__list" class="content__main">
-            </div>
-        </div>
+            </nav>
+            <section id ="user__list" class="content__main">
+            </section>
+        </main>
         <script src="users.js"></script>
         <script src="index.js"></script>
     </body>
