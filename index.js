@@ -3,6 +3,7 @@ const listElemet = document.querySelector("#user__list");
 const listAllElement = document.querySelector("#list__all");
 const sideBarIconEment = document.querySelector("#sideBar__icon");
 const sideBarElement = document.querySelector("#sideBrar");
+const tooltipElement = document.querySelector(".tooltiptext")
 
 const arrTrash = [];
 const arrAttended = [];
@@ -15,7 +16,7 @@ function userListRender(userList) {
                 <li class="content__main__list__row">
                     <div class="content__main__list__row_user"><img class="content__main__list__row__photo" src="${user.photo}"> </div>
                     <div id="user__name" class="content__main__list__row__name content__main__list__row_user"> <a  class="content__main__list__row_user__link" href="./userModule/person.html?id=${user.id}"> ${user.name} </a></div>
-                    <div class="content__main__list__row_user">${user.email}</div>
+                    <div class="content__main__list__row_user">${user.email} <span hidden class="tooltiptext">${user.email}</span></div>
                     <div class="content__main__list__row_user">${user.phone}</div>
                     <div class="content__main__list__row_user">${user.city}</div>
                     <div class="content__main__list__row_user">
@@ -127,6 +128,12 @@ function toastrNotification(){
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
   }
+}
+
+function tooltip(){
+  tooltipElement.addEventListener("click" , event => {
+    tooltipElement.style.display = "flex";
+  });
 }
 
 toastrNotification();

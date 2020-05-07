@@ -146,6 +146,18 @@ body{
     cursor: pointer;
 }
 
+.tooltiptext{
+    width: 220px;
+    background-color: #787878;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+   
+}
+
 /* Telefones em paisagem a tablet em retrato */
 @media (max-width: 767px) {
     /* Inicio Estilos navbar */
@@ -172,8 +184,6 @@ body{
         margin-bottom: 10px;
     }
 
-    /* Fim Estilos navbar */
-
     /* Inicio Estilos content*/
     .content__main{
         width: 90%;
@@ -199,7 +209,6 @@ body{
     .content__main__list__row__photo{
       display: none;
     }
-    /* Fim Estilos content*/
 
     /*Inicio estilo sideBar*/
     .content__sidebar{
@@ -226,6 +235,7 @@ body{
         margin-left: 180px;
         position: relative;
         padding: 10px;
+       
     }
     .content__main__list{
         width: 100%;
@@ -269,7 +279,7 @@ body{
     .content__main__list__row{
         width:100%;
         padding:10px;
-        display: grid;
+        display: grid; 
         grid-auto-flow: column;
         grid-auto-columns: 70px  120px 225px 120px 150px 130px;
     }
