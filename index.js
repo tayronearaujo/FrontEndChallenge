@@ -8,6 +8,7 @@ const tooltipElement = document.querySelector(".tooltiptext")
 const arrTrash = [];
 const arrAttended = [];
 
+//A função renderiza a lista de usuários 
 function userListRender(userList) {
     const list  = `
         <ul class="content__main__list">
