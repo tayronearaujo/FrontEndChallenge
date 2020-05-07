@@ -74,7 +74,7 @@ function sendUserTrash(userData){
     saveToStorage('list-trash', arrTrash);
    
   }else{
-    return alert("Usuário já está na lista");
+    return toastr.warning('Este item já está na lixera!');
   }
 }
 
@@ -87,7 +87,7 @@ function sendUserAttend(userData){
     saveToStorage('list-attended', arrAttended);
     console.log(userData);
   }else{
-    return alert("Usuário já está na lista");
+    return toastr.warning('Este item já está na lista de atendidos');
   }
 }
 
@@ -109,5 +109,26 @@ function getToStorage(item){
   return JSON.parse(localStorage.getItem(item));
 }
 
+function toastrNotification(){
+  toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": true,
+    "progressBar": false,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
+}
+
+toastrNotification();
 userListRender(users);
 search();

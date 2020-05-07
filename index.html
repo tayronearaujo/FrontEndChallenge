@@ -6,6 +6,7 @@
         <title>Teste FontEnd</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./toastr/toastr.min.css">
         <script src="https://kit.fontawesome.com/b775c270a3.js" crossorigin="anonymous"></script>
     </head>
      <!-- Fim do cabecalho -->
@@ -20,6 +21,7 @@
             <a class="navbar__user"> <i class="fas fa-user-circle fa-2x"></i> </a>
         </nav>
         <main class="content">
+            <!--Sidebar-->
             <nav id="sideBrar" class="content__sidebar">
                 <ul class="content__sidebar__list">
                     <li id="list__all" class="content__sidebar__list__item" onclick="changeList()"> <i
@@ -29,10 +31,13 @@
                     <li id="list__thash" class="content__sidebar__list__item"  onclick="renderTrash()"><i
                         class="fas fa-trash content__main__list__row__icons__itens"></i>Lixeira</li>
                 </ul>
-            </nav>
+            </nav><!--Sidebar-->
+            <!--Seção em que a lista será rendererizada -->
             <section id ="user__list" class="content__main">
-            </section>
+            </section>  <!--fim da seção em que a lista será rendererizada -->
         </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="./toastr/toastr.min.js"></script>
         <script src="users.js"></script>
         <script src="index.js"></script>
     </body>
