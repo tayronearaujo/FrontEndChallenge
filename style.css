@@ -89,6 +89,25 @@ body{
     cursor: pointer;
 }
 
+.content__toast{
+    visibility: hidden;
+    position: fixed;
+    z-index: 2;
+}
+.toast_style{
+    visibility: visible;
+    margin-top: 70px;
+    background-color: #dfa800;
+    color:#fff;
+    width: 250px;
+    padding: 10px;
+    position: fixed;
+    border-radius: 10px;
+    z-index: 2;
+    margin-left: 200px;
+    text-align: center;
+}
+
 .content__main{
     width: 100%;
     padding: 30px;
@@ -155,7 +174,6 @@ body{
     padding: 5px;
     position: absolute;
     z-index: 1;
-   
 }
 
 /* Telefones em paisagem a tablet em retrato */

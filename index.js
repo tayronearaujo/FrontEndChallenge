@@ -3,6 +3,7 @@ const listElemet = document.querySelector("#user__list");
 const listAllElement = document.querySelector("#list__all");
 const sideBarIconEment = document.querySelector("#sideBar__icon");
 const sideBarElement = document.querySelector("#sideBrar");
+const toastElement = document.querySelector("#toast");
 const tooltipElement = document.querySelector(".tooltiptext")
 
 const arrTrash = [];
@@ -76,7 +77,7 @@ function sendUserTrash(userData){
     saveToStorage('list-trash', arrTrash);
    
   }else{
-    return toastr.warning('Este item já está na lixera!');
+    return creatToast('lixeira');
   }
 }
 
@@ -87,10 +88,22 @@ function sendUserAttend(userData){
   if (checkId === undefined){
     arrAttended.push(userObject);
     saveToStorage('list-attended', arrAttended);
-    console.log(userData);
   }else{
-    return toastr.warning('Este item já está na lista de atendidos');
+    return creatToast('usuários atendidos');
   }
+}
+
+function creatToast(status){
+  const toast = `
+    <label>
+      <i class="fas fa-exclamation-triangle"></i>
+      <spam>Este item já esta na lista ${status}</spam>
+    </label>
+  `;
+  toastElement.innerHTML = toast;
+
+  toastElement.className = 'toast_style'
+  setTimeout(function(){toastElement.className ='content__toast' }, 2000);
 }
 
 function renderTrash(){
@@ -111,32 +124,11 @@ function getToStorage(item){
   return JSON.parse(localStorage.getItem(item));
 }
 
-function toastrNotification(){
-  toastr.options = {
-    "closeButton": true,
-    "debug": false,
-    "newestOnTop": true,
-    "progressBar": false,
-    "positionClass": "toast-top-right",
-    "preventDuplicates": false,
-    "onclick": null,
-    "showDuration": "300",
-    "hideDuration": "1000",
-    "timeOut": "5000",
-    "extendedTimeOut": "1000",
-    "showEasing": "swing",
-    "hideEasing": "linear",
-    "showMethod": "fadeIn",
-    "hideMethod": "fadeOut"
-  }
-}
-
 function tooltip(){
   tooltipElement.addEventListener("click" , event => {
     tooltipElement.style.display = "flex";
   });
 }
 
-toastrNotification();
 userListRender(users);
 search();
