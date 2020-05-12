@@ -82,11 +82,10 @@ body{
     margin: 10px;
 }
 
-.content__sidebar__list__item__visited{
+.content__sidebar__list__item__select{
     color:#aebb3f;
     cursor: pointer;
 }
-
 .content__toast{
     visibility: hidden;
     position: fixed;
@@ -159,12 +158,17 @@ body{
     border-radius: 50px;
 }
 
-.content__main__list__row__icons__itens {
+.content__main__list__row__icons__itens{
     width: 30px;
     cursor: pointer;
 }
-.all-list-trash{
-    background-color: aqua;
+
+#icon_visible{
+   display: relative;
+}
+
+#icon_invisible{
+    display: none;
 }
 
 .tooltiptext{

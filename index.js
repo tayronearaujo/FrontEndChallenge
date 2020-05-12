@@ -1,10 +1,16 @@
 const inputElement = document.querySelector("#user__search");
-const listElemet = document.querySelector("#user__list");
+const listElement = document.querySelector("#user__list");
+
 const listAllElement = document.querySelector("#list__all");
+const listAttendedElement = document.querySelector("#list__attended"); 
+const listTrashElement = document.querySelector("#list__thash");
+
 const sideBarIconEment = document.querySelector("#sideBar__icon");
 const sideBarElement = document.querySelector("#sideBar");
 const toastElement = document.querySelector("#toast");
-const trashElement = document.querySelector('.all-list-trash');
+
+var iconTrash = "icon_visible";
+var iconAttended = "icon_visible";
 
 const arrTrash = [];
 const arrAttended = [];
@@ -21,16 +27,16 @@ function userListRender(userList) {
                     <div class="content__main__list__row_user">${user.phone}</div>
                     <div class="content__main__list__row_user">${user.city}</div>
                     <div class="content__main__list__row_user">
-                        <i class="all-list-trash fas fa-trash content__main__list__row__icons__itens all-list-trash" onclick="sendUserTrash('${JSON.stringify(user).split('"').join("&quot;")}')"></i>   
+                        <i id="${iconTrash}" class="all-list-trash fas fa-trash content__main__list__row__icons__itens" onclick="sendUserTrash('${JSON.stringify(user).split('"').join("&quot;")}')"></i>   
                         <i class="fas fa-th content__main__list__row__icons__itens " onclick="changeList()"></i>  
-                        <i class="fas fa-check content__main__list__row__icons__itens all-list-attended" onclick="sendUserAttend('${JSON.stringify(user).split('"').join("&quot;")}')"></i>  
+                        <i id="${iconAttended}" class="fas fa-check content__main__list__row__icons__itens" onclick="sendUserAttend('${JSON.stringify(user).split('"').join("&quot;")}')"></i>  
                     </div>
                 </li>                   
             `
             ).join('')}
         </ul>
     `;
-    listElemet.innerHTML = list;
+    listElement.innerHTML = list;
 }
 
 function openSidebar(){
@@ -40,7 +46,9 @@ function openSidebar(){
     sideBarElement.className = 'content__sidebar';
 }
 
-function changeList(){
+function changeList(){ 
+  iconTrash = 'icon_visible';
+  iconAttended = 'icon_visible';
   userListRender(users);
 }
 
@@ -96,13 +104,19 @@ function creatToast(status){
 }
 
 function renderTrash(){
+  if (iconAttended === 'icon_invisible')
+    iconAttended = 'icon_visible';
+  
+  iconTrash = 'icon_invisible';
   const userTrash = getToStorage('list-trash');
-  console.log(userTrash);
-
   userListRender(userTrash);
 }
 
 function renderAttended(){
+  if (iconTrash === 'icon_invisible')
+    iconTrash = 'icon_visible';
+
+  iconAttended = 'icon_invisible';
   const userAttended = getToStorage('list-attended');
   userListRender(userAttended);
 }
