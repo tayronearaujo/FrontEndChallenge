@@ -17,6 +17,7 @@ body{
     z-index:2;
     position: fixed;
     width: 100%;
+    box-shadow: 0px 6px 8px -2px rgba(130,130,130,0.6);
 }
 
 .navbar__brand__img{
@@ -36,7 +37,7 @@ body{
      border:none;
      outline: none;
      border-radius: 50px;
-     padding: 5px;
+     padding: 8px;
      padding-left: 40px;
      font-size: 16px;
      font-weight: bolder;
@@ -50,7 +51,7 @@ body{
     color:#aebb3f;
     position:absolute;
     left: 0;
-    top:5px;
+    top: 8px;
     padding: 0px 0px 0px 10px;
  }
  
@@ -75,16 +76,13 @@ body{
     position: fixed;
     color:#87868c;
 }
-.content__sidebar__list{
-    
-}
 
 .content__sidebar__list__item{
     padding: 5px 10px;
     margin: 10px;
 }
 
-.content__sidebar__list__item:hover{
+.content__sidebar__list__item__visited{
     color:#aebb3f;
     cursor: pointer;
 }
@@ -132,6 +130,7 @@ body{
     justify-content: space-between;
     align-items: center;
     padding:15px;
+   
 }
 .content__main__list__row_user{
     width: 40%;
@@ -160,9 +159,12 @@ body{
     border-radius: 50px;
 }
 
-.content__main__list__row__icons__itens{
+.content__main__list__row__icons__itens {
     width: 30px;
     cursor: pointer;
+}
+.all-list-trash{
+    background-color: aqua;
 }
 
 .tooltiptext{
@@ -176,7 +178,6 @@ body{
     z-index: 1;
 }
 
-/* Telefones em paisagem a tablet em retrato */
 @media (max-width: 767px) {
     /* Inicio Estilos navbar */
     .navbar{
@@ -224,10 +225,7 @@ body{
         width: 60%;
         padding: 8px;
     }  
-    .content__main__list__row__photo{
-      display: none;
-    }
-
+    
     /*Inicio estilo sideBar*/
     .content__sidebar{
         display: none;
@@ -237,6 +235,20 @@ body{
         margin-top: 90px;
         position: absolute;
     }
+    .sidebar__show{
+        display:block;
+        width: 100%;
+        height: 130px;
+        margin: 0 auto;
+        margin-top: 90px;
+        position: absolute;
+        padding: 10px 0;
+        box-shadow: 2px 0px 4px 4px rgba(219,216,219,1);
+        font-size: 20px;
+        background-color:#ffffff;
+         z-index:1;
+        color:#87868c;
+    }
     .content__sidebar__list{
         list-style-type: none;
     }
@@ -244,7 +256,7 @@ body{
         padding: 5px 10px;
         margin: 10px;
     }
-}
+}     
 @media (min-width: 768px) and (max-width: 979px) {
     
     /* Inicio Estilos content*/
@@ -252,7 +264,7 @@ body{
         width: 90%;
         margin-left: 180px;
         position: relative;
-        padding: 10px;
+        padding: 20px;
        
     }
     .content__main__list{
@@ -282,9 +294,10 @@ body{
         width:160px;
         height: 100%;
     }
+    
 }
-@media(min-width: 980px) {
 
+@media(min-width: 980px) {
     /* Inicio Estilos content*/
     .content__main{
         position: relative;
