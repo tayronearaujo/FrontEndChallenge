@@ -1,19 +1,19 @@
 const inputElement = document.querySelector("#user__search");
 const listElement = document.querySelector("#user__list");
-
-const listAllElement = document.querySelector("#list__all");
-const listAttendedElement = document.querySelector("#list__attended"); 
-const listTrashElement = document.querySelector("#list__thash");
-
 const sideBarIconEment = document.querySelector("#sideBar__icon");
 const sideBarElement = document.querySelector("#sideBar");
 const toastElement = document.querySelector("#toast");
 
+const arrTrash = [];
+const arrAttended = [];
+
+var listAllElement = document.querySelector("#list__all");
+var listAttendedElement = document.querySelector("#list__attended"); 
+var listTrashElement = document.querySelector("#list__thash");
 var iconTrash = "icon_visible";
 var iconAttended = "icon_visible";
 
-const arrTrash = [];
-const arrAttended = [];
+
 
 function userListRender(userList) {
     const list  = `
@@ -49,6 +49,9 @@ function openSidebar(){
 function changeList(){ 
   iconTrash = 'icon_visible';
   iconAttended = 'icon_visible';
+  listAllElement.setAttribute('id','list__item__select'); 
+  listTrashElement.setAttribute('id','list__item__no__select'); 
+  listAttendedElement.setAttribute('id','list__item__no__select');
   userListRender(users);
 }
 
@@ -72,7 +75,6 @@ function sendUserTrash(userData){
   if (checkId === undefined){
     arrTrash.push(userObject);
     saveToStorage('list-trash', arrTrash);
-   
   }else{
     return creatToast('lixeira !');
   }
@@ -98,7 +100,6 @@ function creatToast(status){
     </div>
   `;
   toastElement.innerHTML = toast;
-
   toastElement.className = 'toast_style'
   setTimeout(function(){toastElement.className ='content__toast' }, 3000);
 }
@@ -108,6 +109,10 @@ function renderTrash(){
     iconAttended = 'icon_visible';
   
   iconTrash = 'icon_invisible';
+
+  listAllElement.setAttribute('id','list__item__no__select'); 
+  listTrashElement.setAttribute('id','list__item__select'); 
+  listAttendedElement.setAttribute('id','list__item__no__select');
   const userTrash = getToStorage('list-trash');
   userListRender(userTrash);
 }
@@ -117,6 +122,10 @@ function renderAttended(){
     iconTrash = 'icon_visible';
 
   iconAttended = 'icon_invisible';
+  listAllElement.setAttribute('id','list__item__no__select'); 
+  listTrashElement.setAttribute('id','list__item__no__select'); 
+  listAttendedElement.setAttribute('id','list__item__select');
+
   const userAttended = getToStorage('list-attended');
   userListRender(userAttended);
 }
@@ -128,7 +137,6 @@ function saveToStorage(item, data){
 function getToStorage(item){
   return JSON.parse(localStorage.getItem(item));
 }
-
 
 userListRender(users);
 search();

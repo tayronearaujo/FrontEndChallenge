@@ -76,16 +76,26 @@ body{
     position: fixed;
     color:#87868c;
 }
+#list__all{
+    color:#aebb3f;
+    cursor: pointer;
+}
 
 .content__sidebar__list__item{
     padding: 5px 10px;
     margin: 10px;
 }
 
-.content__sidebar__list__item__select{
+#list__item__select{
     color:#aebb3f;
     cursor: pointer;
 }
+
+#list__item__no__select{
+    color:#87868c;
+    cursor: pointer;
+}
+
 .content__toast{
     visibility: hidden;
     position: fixed;
@@ -109,7 +119,7 @@ body{
     width: 100%;
     padding: 30px;
     margin-left: 200px;
-    margin-top: 60px;    
+    margin-top: 100px;    
 }
 
 .content__main__list{
@@ -265,7 +275,7 @@ body{
     
     /* Inicio Estilos content*/
     .content__main{
-        width: 90%;
+        width: 100%;
         margin-left: 180px;
         position: relative;
         padding: 20px;
@@ -276,7 +286,7 @@ body{
         margin: 0 auto;
     }
     .content__main__list__row{
-        width:100%;
+        width:98%;
         padding:3px;
         display: grid;
         grid-auto-flow: column;
