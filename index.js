@@ -13,8 +13,6 @@ var listTrashElement = document.querySelector("#list__thash");
 var iconTrash = "icon_visible";
 var iconAttended = "icon_visible";
 
-
-
 function userListRender(userList) {
     const list  = `
         <ul class="content__main__list">
@@ -52,6 +50,7 @@ function changeList(){
   listAllElement.setAttribute('id','list__item__select'); 
   listTrashElement.setAttribute('id','list__item__no__select'); 
   listAttendedElement.setAttribute('id','list__item__no__select');
+
   userListRender(users);
 }
 
@@ -70,39 +69,41 @@ function filterUsersBySearchValue(searchValue) {
 
 function sendUserTrash(userData){
   let userObject = JSON.parse(userData);
-  let checkId = arrTrash.find(user => user.id === userObject.id);
+  const idUserTrash = arrTrash.find(user => user.id === userObject.id);
+  //const idUserAttended = arrAttended.find(user => user.id === userObject.id);
 
-  if (checkId === undefined){
-    arrTrash.push(userObject);
+  if (idUserTrash === undefined){
+    arrTrash.push(userObject);  
+    creatToast('toast_success','Usuário enviado para lista de lixeira !');
     saveToStorage('list-trash', arrTrash);
+
+    removeItem(arrAttended,userObject.id);
+    saveToStorage('list-attended', arrAttended);
   }else{
-    return creatToast('lixeira !');
+    return creatToast('toast_warning','Este item já esta na lista de lixeira !');
   }
 }
 
 function sendUserAttend(userData){
   let userObject = JSON.parse(userData);
-  let checkId = arrAttended.find(user => user.id === userObject.id);
+  const idUserAttended = arrAttended.find(user => user.id === userObject.id);
 
-  if (checkId === undefined){
+  if (idUserAttended === undefined){
     arrAttended.push(userObject);
+    creatToast('toast_success','Usuário enviado para lista de atendidos !');
     saveToStorage('list-attended', arrAttended);
+
+    removeItem(arrTrash,userObject.id);
+    saveToStorage('list-trash', arrTrash);
   }else{
-    return creatToast('usuários atendidos !');
+    return creatToast('toast_warning','Este item já esta na lista de usuários atendidos !');
   }
 }
 
-function creatToast(status){
-  const toast = `
-    <div>
-      <i class="fas fa-exclamation-triangle"></i>
-      <span>Este item já esta na lista ${status}</span>
-    </div>
-  `;
-  toastElement.innerHTML = toast;
-  toastElement.className = 'toast_style'
-  setTimeout(function(){toastElement.className ='content__toast' }, 3000);
-}
+function removeItem(data, id) {
+   let index = data.indexOf(id);
+   data.splice(index,1);
+};
 
 function renderTrash(){
   if (iconAttended === 'icon_invisible')
@@ -113,8 +114,14 @@ function renderTrash(){
   listAllElement.setAttribute('id','list__item__no__select'); 
   listTrashElement.setAttribute('id','list__item__select'); 
   listAttendedElement.setAttribute('id','list__item__no__select');
-  const userTrash = getToStorage('list-trash');
-  userListRender(userTrash);
+
+  let userTrash = getToStorage('list-trash');
+  if (userTrash === null){
+    userTrash = '';  
+    creatToast('toast_warning','A lixeira está vazia !');
+  }else{
+    userListRender(userTrash);
+  }
 }
 
 function renderAttended(){
@@ -126,8 +133,25 @@ function renderAttended(){
   listTrashElement.setAttribute('id','list__item__no__select'); 
   listAttendedElement.setAttribute('id','list__item__select');
 
-  const userAttended = getToStorage('list-attended');
-  userListRender(userAttended);
+  let userAttended = getToStorage('list-attended');
+  if (userAttended === null){
+    userAttended = '';  
+    creatToast('toast_warning','A lista de atendidos está vazia !');
+  }else{
+    userListRender(userAttended);
+  }
+}
+
+function creatToast(type,status){
+  const toast = `
+    <div>
+      <i class="fas fa-exclamation-triangle"></i>
+      <span>${status}</span>
+    </div>
+  `;
+  toastElement.innerHTML = toast;
+  toastElement.className = type;
+  setTimeout(function(){toastElement.className ='content__toast' }, 3000);
 }
 
 function saveToStorage(item, data){
@@ -137,6 +161,7 @@ function saveToStorage(item, data){
 function getToStorage(item){
   return JSON.parse(localStorage.getItem(item));
 }
+
 
 userListRender(users);
 search();
