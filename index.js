@@ -4,6 +4,8 @@ const sideBarIconEment = document.querySelector("#sideBar__icon");
 const sideBarElement = document.querySelector("#sideBar");
 const toastElement = document.querySelector("#toast");
 
+const testElement = document.querySelector("#icon_visible");
+
 const arrTrash = [];
 const arrAttended = [];
 
@@ -13,10 +15,19 @@ var listTrashElement = document.querySelector("#list__thash");
 var iconTrash = "icon_visible";
 var iconAttended = "icon_visible";
 
+function userList(arrList){
+  let list = arrList;
+  saveToStorage('list-users', list);
+}
+
 function userListRender(userList) {
+  userList.map(user =>{
+  
+  })
+
     const list  = `
         <ul class="content__main__list">
-            ${userList.map(user =>
+            ${userList.map(user => 
             `
                 <li class="content__main__list__row">
                     <div class="content__main__list__row_user"><img class="content__main__list__row__photo " src="${user.photo}"> </div>
@@ -31,14 +42,14 @@ function userListRender(userList) {
                     </div>
                 </li>                   
             `
-            ).join('')}
+              ).join('')}
         </ul>
     `;
     listElement.innerHTML = list;
 }
 
 function openSidebar(){
-  if (sideBarElement.className != 'sidebar__show' )
+  if (sideBarElement.className != 'sidebar__show')
     sideBarElement.className = 'sidebar__show';
   else
     sideBarElement.className = 'content__sidebar';
@@ -70,10 +81,11 @@ function filterUsersBySearchValue(searchValue) {
 function sendUserTrash(userData){
   let userObject = JSON.parse(userData);
   const idUserTrash = arrTrash.find(user => user.id === userObject.id);
-  //const idUserAttended = arrAttended.find(user => user.id === userObject.id);
 
   if (idUserTrash === undefined){
-    arrTrash.push(userObject);  
+    arrTrash.push(userObject);
+    setUserStatus(userObject,'lixeira');
+    console.log(userObject);
     creatToast('toast_success','Usuário enviado para lista de lixeira !');
     saveToStorage('list-trash', arrTrash);
 
@@ -90,6 +102,7 @@ function sendUserAttend(userData){
 
   if (idUserAttended === undefined){
     arrAttended.push(userObject);
+    setUserStatus(userObject,'atendidos');
     creatToast('toast_success','Usuário enviado para lista de atendidos !');
     saveToStorage('list-attended', arrAttended);
 
@@ -101,8 +114,8 @@ function sendUserAttend(userData){
 }
 
 function removeItem(data, id) {
-   let index = data.indexOf(id);
-   data.splice(index,1);
+  let index = data.indexOf(id);
+  data.splice(index,1);
 };
 
 function renderTrash(){
@@ -154,6 +167,25 @@ function creatToast(type,status){
   setTimeout(function(){toastElement.className ='content__toast' }, 3000);
 }
 
+function setUserStatus(data,status){
+  data.flag = status;
+
+  
+}
+
+function getUserStatus(data){
+  if(data.flag === ''){
+    iconAttended = "list__item__no__select";
+    iconTrash = "list__item__no__select";
+  } else if(data.flag === 'lixeira'){
+    iconTrash = "list__item__select";
+    iconAttended = "list__item__no__select";
+  }else{
+    iconAttended = "list__item__select";
+    iconTrash = "list__item__no__select";
+  }
+}
+
 function saveToStorage(item, data){
   localStorage.setItem(item, JSON.stringify(data));
 }
@@ -162,6 +194,6 @@ function getToStorage(item){
   return JSON.parse(localStorage.getItem(item));
 }
 
-
-userListRender(users);
+userList(users);
+userListRender(getToStorage('list-users'));
 search();

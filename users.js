@@ -9,6 +9,7 @@ const users = [
       address:"3641 California St",
       city: "Uberlândia-MG",
       password:10010,
+      flag: ""
     },
     {
       id:2,
@@ -19,7 +20,8 @@ const users = [
       phone: "(960)-861-1890",
       address:"3641 California St",
       city: "Uberlândia-MG",
-      password: 10110
+      password: 10110,
+      flag: ""
     },
     {
       id:3,
@@ -30,7 +32,8 @@ const users = [
       phone: "(960)-861-1890",
       address:"3641 California St",
       city: "São Paulo-SP",
-      password: 10111
+      password: 1011,
+      flag: ""
     },
     {
       id:4,
@@ -41,7 +44,8 @@ const users = [
       phone: "(960)-861-1890",
       address:"3641 California St",
       city: "Uberlândia-MG",
-      password: 101100
+      password: 101100,
+      flag: ""
     },
     {
       id:5,
@@ -52,7 +56,8 @@ const users = [
       phone: "(960)-861-1890",
       address:"3641 California St",
       city: "São Paulo-SP",
-      password: 111011
+      password: 111011,
+      flag: ""
     },
     {
       id:6,
@@ -63,7 +68,8 @@ const users = [
       phone: "(960)-861-1890",
       address:"3641 California St",
       city: "São Paulo-SP",
-      password: 1110101
+      password: 1110101,
+      flag: ""
 
     },
     {
@@ -75,7 +81,8 @@ const users = [
       phone: "(960)-861-1890",
       address:"3641 California St",
       city: "Uberlândia-MG",
-      password: 1000101
+      password: 1000101,
+      flag: ""
     },
     {
       id:8,
@@ -86,7 +93,8 @@ const users = [
       phone: "(960)-861-1890",
       address:"3641 California St",
       city: "Belo Horizonte-MG",
-      password: 1001110
+      password: 1001110,
+      flag: ""
     },
     {
       id:9,
@@ -97,6 +105,7 @@ const users = [
       phone: "(960)-861-1890",
       address:"3641 California St",
       city: "São Paulo-SP",
-      password: 1111110
+      password: 1111110,
+      flag: ""
     }
   ];
