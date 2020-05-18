@@ -4,10 +4,8 @@ const sideBarIconEment = document.querySelector("#sideBar__icon");
 const sideBarElement = document.querySelector("#sideBar");
 const toastElement = document.querySelector("#toast");
 
-const testElement = document.querySelector("#icon_visible");
-
-const arrTrash = [];
-const arrAttended = [];
+const trashStatus = 'Trash';
+const attendedStatus = 'Attendend';
 
 var listAllElement = document.querySelector("#list__all");
 var listAttendedElement = document.querySelector("#list__attended"); 
@@ -16,12 +14,10 @@ var iconTrash = "icon_visible";
 var iconAttended = "icon_visible";
 
 function userList(arrList){
-  let list = arrList;
-  saveToStorage('list-users', list);
+  saveToStorage(arrList);
 }
 
 function userListRender(userList) {
-
     const list  = `
         <ul class="content__main__list">
             ${userList.map(user => 
@@ -33,9 +29,9 @@ function userListRender(userList) {
                     <div class="content__main__list__row_user">${user.phone}</div>
                     <div class="content__main__list__row_user">${user.city}</div>
                     <div class="content__main__list__row_user">
-                        <i id="${iconTrash}" class="all-list-trash fas fa-trash content__main__list__row__icons__itens" onclick="sendUserTrash('${JSON.stringify(user).split('"').join("&quot;")}')"></i>   
+                        <i id="${iconTrash}" class="all-list-trash fas fa-trash content__main__list__row__icons__itens ${getClassSelectorByUserStatus(user.status,trashStatus)}" onclick="changeUserStatus('${user.id}','${trashStatus}')"></i>   
                         <i class="fas fa-th content__main__list__row__icons__itens " onclick="changeList()"></i>  
-                        <i id="${iconAttended}" class="fas fa-check content__main__list__row__icons__itens" onclick="sendUserAttend('${JSON.stringify(user).split('"').join("&quot;")}')"></i>  
+                        <i id="${iconAttended}" class="fas fa-check content__main__list__row__icons__itens ${getClassSelectorByUserStatus(user.status,attendedStatus)}" onclick="changeUserStatus('${user.id}','${attendedStatus}')"></i>  
                     </div>
                 </li>                   
             `
@@ -59,7 +55,8 @@ function changeList(){
   listTrashElement.setAttribute('id','list__item__no__select'); 
   listAttendedElement.setAttribute('id','list__item__no__select');
 
-  userListRender(users);
+  const arrUser = getToStorage();
+  userListRender(arrUser);
 }
 
 function search() {
@@ -75,45 +72,21 @@ function filterUsersBySearchValue(searchValue) {
   );
 }
 
-function sendUserTrash(userData){
-  let userObject = JSON.parse(userData);
-  const idUserTrash = arrTrash.find(user => user.id === userObject.id);
+function changeUserStatus(userId,status){
+  const arrUsers = getToStorage();
 
-  if (idUserTrash === undefined){
-    arrTrash.push(userObject);
-    setUserStatus(userObject,'lixeira');
-    console.log(userObject);
-    creatToast('toast_success','Usuário enviado para lista de lixeira !');
-    saveToStorage('list-trash', arrTrash);
-
-    removeItem(arrAttended,userObject.id);
-    saveToStorage('list-attended', arrAttended);
-  }else{
-    return creatToast('toast_warning','Este item já esta na lista de lixeira !');
-  }
+  const newUserArr = arrUsers.map(user =>{
+    if(user.status === status){
+      creatToast('toast_warning','Este item já esta na lista!');
+    }
+    else if(user.id === userId){
+      creatToast('toast_success','Usuário mudou de status!');
+      return {...user, status: user.status = status}
+    }
+    return {...user}
+  });
+  saveToStorage(newUserArr);
 }
-
-function sendUserAttend(userData){
-  let userObject = JSON.parse(userData);
-  const idUserAttended = arrAttended.find(user => user.id === userObject.id);
-
-  if (idUserAttended === undefined){
-    arrAttended.push(userObject);
-    setUserStatus(userObject,'atendidos');
-    creatToast('toast_success','Usuário enviado para lista de atendidos !');
-    saveToStorage('list-attended', arrAttended);
-
-    removeItem(arrTrash,userObject.id);
-    saveToStorage('list-trash', arrTrash);
-  }else{
-    return creatToast('toast_warning','Este item já esta na lista de usuários atendidos !');
-  }
-}
-
-function removeItem(data, id) {
-  let index = data.indexOf(id);
-  data.splice(index,1);
-};
 
 function renderTrash(){
   if (iconAttended === 'icon_invisible')
@@ -125,13 +98,13 @@ function renderTrash(){
   listTrashElement.setAttribute('id','list__item__select'); 
   listAttendedElement.setAttribute('id','list__item__no__select');
 
-  let userTrash = getToStorage('list-trash');
-  if (userTrash === null){
-    userTrash = '';  
+  const arrUsers = getToStorage();
+  const trashUsers = arrUsers.filter(user => user?.status === trashStatus);
+
+  if (trashUsers.length === 0)
     creatToast('toast_warning','A lixeira está vazia !');
-  }else{
-    userListRender(userTrash);
-  }
+  else
+    userListRender(trashUsers);
 }
 
 function renderAttended(){
@@ -143,13 +116,13 @@ function renderAttended(){
   listTrashElement.setAttribute('id','list__item__no__select'); 
   listAttendedElement.setAttribute('id','list__item__select');
 
-  let userAttended = getToStorage('list-attended');
-  if (userAttended === null){
-    userAttended = '';  
+  const arrUsers = getToStorage();
+  const attendedUsers = arrUsers.filter(user => user?.status === attendedStatus);
+
+  if(attendedUsers.length === 0)
     creatToast('toast_warning','A lista de atendidos está vazia !');
-  }else{
-    userListRender(userAttended);
-  }
+  else
+  userListRender(attendedUsers);   
 }
 
 function creatToast(type,status){
@@ -164,29 +137,22 @@ function creatToast(type,status){
   setTimeout(function(){toastElement.className ='content__toast' }, 3000);
 }
 
-function setUserStatus(data,status){
-  data.flag = status;
-}
-
-function getUserStatus(data){
-  if(data.flag === ''){
-    iconAttended = "list__item__no__select";
-    iconTrash = "list__item__no__select";
-  } else if(data.flag === 'lixeira'){
-    iconTrash = "list__item__select";
-    iconAttended = "list__item__no__select";
-  }else{
-    iconAttended = "list__item__select";
-    iconTrash = "list__item__no__select";
+function getClassSelectorByUserStatus(userStatus, status){
+  if(userStatus === trashStatus && status === trashStatus){
+    return 'trash-selected'
   }
+  if(userStatus === attendedStatus && status === attendedStatus){
+    return 'attended-selected'
+  }
+  return 'item_no_selected'
 }
 
-function saveToStorage(item, data){
-  localStorage.setItem(item, JSON.stringify(data));
+function saveToStorage(data){
+  localStorage.setItem('list-users', JSON.stringify(data));
 }
 
-function getToStorage(item){
-  return JSON.parse(localStorage.getItem(item));
+function getToStorage(){
+  return JSON.parse(localStorage.getItem('list-users'));
 }
 
 userList(users);

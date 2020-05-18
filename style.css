@@ -96,6 +96,22 @@ body{
     cursor: pointer;
 }
 
+.item_no_selected{
+    color:#87868c;
+    cursor: pointer;
+}
+
+.trash-selected{
+    color:#aebb3f;
+    cursor: pointer;
+}
+
+.attended-selected{
+    color:#aebb3f;
+    cursor: pointer;
+}
+
+
 .content__toast{
     visibility: hidden;
     position: fixed;
