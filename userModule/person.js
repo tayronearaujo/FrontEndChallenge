@@ -13,15 +13,15 @@ function getParameters(){
     const url = new URL(urlParams);
     const id = url.searchParams.get("id");
     
-    return  parseInt(id);
+    return  id;
 }
 
 function findUser(){
     const userList = users;
     let id = getParameters();
     const user = userList.find(user => user.id === id);
-   
-    userPhoto.innerHTML =  `<img class="content__main__user__details__photo" src="${user.photo}">;` 
+
+    userPhoto.innerHTML = `<img class="content__main__user__details__photo" src="${user.photo}">;` 
 
     return user;
 }

@@ -86,6 +86,7 @@ function changeUserStatus(userId,status){
     return {...user}
   });
   saveToStorage(newUserArr);
+  userListRender(newUserArr);
 }
 
 function renderTrash(){
@@ -101,10 +102,18 @@ function renderTrash(){
   const arrUsers = getToStorage();
   const trashUsers = arrUsers.filter(user => user?.status === trashStatus);
 
-  if (trashUsers.length === 0)
-    creatToast('toast_warning','A lixeira está vazia !');
-  else
+  if (trashUsers.length === 0){
+    const modalEmptyList = `
+      <div class ="emptylist__modal">
+      <i class="fas fa-exclamation-circle fa-3x emptylist__modal__icon"></i>
+      <span> A lixeira está vazia !</span>
+      </div>
+      `
+      listElement.innerHTML = modalEmptyList;
+  }
+  else{
     userListRender(trashUsers);
+  }
 }
 
 function renderAttended(){
@@ -119,12 +128,18 @@ function renderAttended(){
   const arrUsers = getToStorage();
   const attendedUsers = arrUsers.filter(user => user?.status === attendedStatus);
 
-  if(attendedUsers.length === 0)
-    creatToast('toast_warning','A lista de atendidos está vazia !');
-  else
-  userListRender(attendedUsers);   
+  if(attendedUsers.length === 0){
+    const modalEmptyList = `
+      <div class ="emptylist__modal">
+      <i class="fas fa-exclamation-circle fa-3x emptylist__modal__icon"></i>
+      <span> A lista de atendidos está vazia !</span>
+      </div>
+      `
+      listElement.innerHTML = modalEmptyList;
+  }else{
+    userListRender(attendedUsers);   
+  }
 }
-
 function creatToast(type,status){
   const toast = `
     <div>

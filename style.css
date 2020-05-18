@@ -203,6 +203,25 @@ body{
     cursor: pointer;
 }
 
+.emptylist__modal{
+    height: 130px;
+    padding: 5px;
+    border: 1px solid #ffff55;
+    border-radius: 5px;
+    background-color: #fff3cd;
+    text-align: center;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.emptylist__modal__icon{
+    color: #e0ba1f;
+    margin-right: 20px;
+    
+}
+
 #icon_visible{
    display: relative;
 }
