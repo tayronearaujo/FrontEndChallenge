@@ -21,9 +21,6 @@ function userList(arrList){
 }
 
 function userListRender(userList) {
-  userList.map(user =>{
-  
-  })
 
     const list  = `
         <ul class="content__main__list">
@@ -169,8 +166,6 @@ function creatToast(type,status){
 
 function setUserStatus(data,status){
   data.flag = status;
-
-  
 }
 
 function getUserStatus(data){
