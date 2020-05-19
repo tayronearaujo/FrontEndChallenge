@@ -8,13 +8,13 @@ const noneStatus = "None"
 const trashStatus = 'Trash';
 const attendedStatus = 'Attended';
 
+var screen = 'None';
+
 var listAllElement = document.querySelector("#list__all");
 var listAttendedElement = document.querySelector("#list__attended"); 
 var listTrashElement = document.querySelector("#list__thash");
 var iconTrash = "icon_visible";
 var iconAttended = "icon_visible";
-
-var screen = 'None';
 
 function userList(arrList){
   saveToStorage(arrList);
@@ -70,7 +70,7 @@ function search() {
 }
 
 function filterUsersBySearchValue(searchValue) {
-  return users.filter(item =>
+  return getUserListByListType(screen).filter(item =>
     item.name.toLowerCase().indexOf(searchValue) !== -1 || item.email.toLowerCase().indexOf(searchValue) !== -1
   );
 }
@@ -87,11 +87,10 @@ function changeUserStatus(userId,status){
       return {...user, status: user.status = status}
     }
     return {...user}
+    
   });
   saveToStorage(newUserArr);
-
   userListRender(getUserListByListType(screen));
-  //userListRender(newUserArr);
 }
 
 function renderTrash(listType){
@@ -101,7 +100,6 @@ function renderTrash(listType){
     iconAttended = 'icon_visible';
   
   iconTrash = 'icon_invisible';
-
   listAllElement.setAttribute('id','list__item__no__select'); 
   listTrashElement.setAttribute('id','list__item__select'); 
   listAttendedElement.setAttribute('id','list__item__no__select');
@@ -154,7 +152,7 @@ function renderAllUsers(){
 }
 
 function getUserListByListType(listType){
-  const userList = getToStorage('list-users');
+  const userList = getToStorage();
   const trashUsers = userList.filter(user => user?.status === trashStatus);
   const attendedUsers = userList.filter(user => user?.status === attendedStatus);
   if(listType === noneStatus){
@@ -198,8 +196,6 @@ function creatToast(type,status){
   setTimeout(function(){toastElement.className ='content__toast' }, 3000);
 }
 
-
-
 userList(users);
-userListRender(getToStorage('list-users'));
+userListRender(getToStorage());
 search();
