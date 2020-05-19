@@ -4,14 +4,17 @@ const sideBarIconEment = document.querySelector("#sideBar__icon");
 const sideBarElement = document.querySelector("#sideBar");
 const toastElement = document.querySelector("#toast");
 
+const noneStatus = "None"
 const trashStatus = 'Trash';
-const attendedStatus = 'Attendend';
+const attendedStatus = 'Attended';
 
 var listAllElement = document.querySelector("#list__all");
 var listAttendedElement = document.querySelector("#list__attended"); 
 var listTrashElement = document.querySelector("#list__thash");
 var iconTrash = "icon_visible";
 var iconAttended = "icon_visible";
+
+var screen = 'None';
 
 function userList(arrList){
   saveToStorage(arrList);
@@ -86,10 +89,14 @@ function changeUserStatus(userId,status){
     return {...user}
   });
   saveToStorage(newUserArr);
-  userListRender(newUserArr);
+
+  userListRender(getUserListByListType(screen));
+  //userListRender(newUserArr);
 }
 
-function renderTrash(){
+function renderTrash(listType){
+  screen = listType;
+
   if (iconAttended === 'icon_invisible')
     iconAttended = 'icon_visible';
   
@@ -99,8 +106,7 @@ function renderTrash(){
   listTrashElement.setAttribute('id','list__item__select'); 
   listAttendedElement.setAttribute('id','list__item__no__select');
 
-  const arrUsers = getToStorage();
-  const trashUsers = arrUsers.filter(user => user?.status === trashStatus);
+  const trashUsers = getUserListByListType(listType);
 
   if (trashUsers.length === 0){
     const modalEmptyList = `
@@ -116,7 +122,9 @@ function renderTrash(){
   }
 }
 
-function renderAttended(){
+function renderAttended(listType){
+  screen = listType;
+
   if (iconTrash === 'icon_invisible')
     iconTrash = 'icon_visible';
 
@@ -124,9 +132,8 @@ function renderAttended(){
   listAllElement.setAttribute('id','list__item__no__select'); 
   listTrashElement.setAttribute('id','list__item__no__select'); 
   listAttendedElement.setAttribute('id','list__item__select');
-
-  const arrUsers = getToStorage();
-  const attendedUsers = arrUsers.filter(user => user?.status === attendedStatus);
+  
+  const attendedUsers = getUserListByListType(listType);
 
   if(attendedUsers.length === 0){
     const modalEmptyList = `
@@ -137,19 +144,28 @@ function renderAttended(){
       `
       listElement.innerHTML = modalEmptyList;
   }else{
-    userListRender(attendedUsers);   
+    userListRender(attendedUsers);
   }
 }
-function creatToast(type,status){
-  const toast = `
-    <div>
-      <i class="fas fa-exclamation-triangle"></i>
-      <span>${status}</span>
-    </div>
-  `;
-  toastElement.innerHTML = toast;
-  toastElement.className = type;
-  setTimeout(function(){toastElement.className ='content__toast' }, 3000);
+
+function renderAllUsers(){
+  screen = 'None';
+  changeList('None');
+}
+
+function getUserListByListType(listType){
+  const userList = getToStorage('list-users');
+  const trashUsers = userList.filter(user => user?.status === trashStatus);
+  const attendedUsers = userList.filter(user => user?.status === attendedStatus);
+  if(listType === noneStatus){
+    return userList;
+  }
+  if(listType === trashStatus){
+   return trashUsers;
+  }
+  if(listType === attendedStatus){
+    return attendedUsers;
+  }
 }
 
 function getClassSelectorByUserStatus(userStatus, status){
@@ -169,6 +185,20 @@ function saveToStorage(data){
 function getToStorage(){
   return JSON.parse(localStorage.getItem('list-users'));
 }
+
+function creatToast(type,status){
+  const toast = `
+    <div>
+      <i class="fas fa-exclamation-triangle"></i>
+      <span>${status}</span>
+    </div>
+  `;
+  toastElement.innerHTML = toast;
+  toastElement.className = type;
+  setTimeout(function(){toastElement.className ='content__toast' }, 3000);
+}
+
+
 
 userList(users);
 userListRender(getToStorage('list-users'));
