@@ -10,6 +10,7 @@
     </head>
     <!-- Fim do cabecalho -->
     <body>
+        <!-- início conteúdo do usuário-->
         <main class="content">
             <div class="content__left">
                 <a class="content__left__link" href="javascript: history.go(-1)"><i class="fas fa-chevron-circle-left fa-2x"></i></a>
@@ -18,12 +19,12 @@
                 <div id= "user-img" class="content__main__user__details"></div>
                 <div id="content-user" class="content__main__user__information__data"></div>
                 <ul class="content__main__user__information__row">
-                    <li id="info-user" class="content__main__user__information__row__icons"><i class="far fa-user fa-2x content__main__user__information__row__icons__itens"></i></li>
-                    <li id="info-mail"  class="content__main__user__information__row__icons"><i class="far fa-envelope fa-2x content__main__user__information__row__icons__itens"></i></li> 
-                    <li id="info-date" class="content__main__user__information__row__icons"><i class="far fa-calendar-alt fa-2x content__main__user__information__row__icons__itens"></i></li> 
-                    <li id="info-addres" class="content__main__user__information__row__icons"><i class="fas fa-map-marked-alt fa-2x content__main__user__information__row__icons__itens"></i></li> 
-                    <li id="info-phone" class="content__main__user__information__row__icons"><i class="fas fa-phone-alt fa-2x content__main__user__information__row__icons__itens"></i></li> 
-                    <li id="info-password" class="content__main__user__information__row__icons"><i class="fas fa-key fa-2x content__main__user__information__row__icons__itens"></i></li>                         
+                    <li id="info-user" class="content__main__user__information__row__icons" onmouseenter="getName()"><i class="far fa-user fa-2x content__main__user__information__row__icons__itens"></i></li>
+                    <li id="info-mail"  class="content__main__user__information__row__icons" onmouseenter="getEmail()"><i class="far fa-envelope fa-2x content__main__user__information__row__icons__itens"></i></li> 
+                    <li id="info-date" class="content__main__user__information__row__icons" onmouseenter="getDate()"><i class="far fa-calendar-alt fa-2x content__main__user__information__row__icons__itens"></i></li> 
+                    <li id="info-addres" class="content__main__user__information__row__icons" onmouseenter="getAdress()"><i class="fas fa-map-marked-alt fa-2x content__main__user__information__row__icons__itens"></i></li> 
+                    <li id="info-phone" class="content__main__user__information__row__icons" onmouseenter="getPhone()"><i class="fas fa-phone-alt fa-2x content__main__user__information__row__icons__itens"></i></li> 
+                    <li id="info-password" class="content__main__user__information__row__icons" onmouseenter="getPassword()"><i class="fas fa-key fa-2x content__main__user__information__row__icons__itens"></i></li>                         
                 </ul>   
             </nav>
         </main>

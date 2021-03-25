@@ -10,62 +10,63 @@ const iconPassword = document.querySelector("#info-password");
 
 
 function getParameters(){
-    let url = new URL(urlParams);
-    let id = url.searchParams.get("id");
+    const url = new URL(urlParams);
+    const id = url.searchParams.get("id");
     
-    return  parseInt(id);
+    return  id;
 }
 
-function renderUser(userList){
-
+function findUser(){
+    const userList = users;
     let id = getParameters();
-    let user = userList.find(user => user.id === id);
+    const user = userList.find(user => user.id === id);
 
-    userPhoto.innerHTML = `<img class="content__main__user__details__photo" src="${user.photo}">; `
+    userPhoto.innerHTML = `<img class="content__main__user__details__photo" src="${user.photo}">;` 
 
-    iconUser.addEventListener("mouseenter", event =>{
-        let userName = ` 
-        <label class="content__main__user__information__data__letter">Hi, My name is: <br> <label class="content__main__user__information__data__letter__name">${user.name}</label></label>
+    return user;
+}
+
+function getName(){
+    let userName = ` 
+        <label class="content__main__user__information__data__letter">Hi, My name is: <br> <label class="content__main__user__information__data__letter__name">${findUser().name}</label></label>
         `
         userInfo.innerHTML = userName;
-    });
-
-    iconMail.addEventListener("mouseenter", event =>{
-        let userMail = ` 
-        <label class="content__main__user__information__data__letter">My email address is <br> <label class="content__main__user__information__data__letter__name">${user.email}</label></label>
-        `
-        userInfo.innerHTML = userMail;
-    });
-
-    iconDate.addEventListener("mouseenter", event =>{
-        let userDate = ` 
-        <label class="content__main__user__information__data__letter">My birthday is <br> <label class="content__main__user__information__data__letter__name">${user.date}</label></label>
-        `
-        userInfo.innerHTML = userDate;
-    });
-
-    iconAddress.addEventListener("mouseenter", event =>{
-        let userAdress = ` 
-        <label class="content__main__user__information__data__letter">My addres is <br> <label class="content__main__user__information__data__letter__name">${user.address}</label></label>
-        `
-        userInfo.innerHTML = userAdress;
-    });
-    
-    iconPhone.addEventListener("mouseenter", event =>{
-        let userPhone = ` 
-        <label class="content__main__user__information__data__letter">My phone number is <br> <label class="content__main__user__information__data__letter__name">${user.phone}</label></label>
-        `
-        userInfo.innerHTML = userPhone;
-    });
-    
-    iconPassword.addEventListener("mouseenter", event =>{
-        let userPassword = ` 
-        <label class="content__main__user__information__data__letter">My password is <br> <label class="content__main__user__information__data__letter__name">${user.password}</label></label>
-        `
-        userInfo.innerHTML = userPassword;
-    });
-    
 }
 
-renderUser(users);
+function getEmail(){
+    let userMail = ` 
+        <label class="content__main__user__information__data__letter">My email address is <br> <label class="content__main__user__information__data__letter__name">${findUser().email}</label></label>
+        `
+        userInfo.innerHTML = userMail;
+}
+
+function getDate(){
+    let userMail = ` 
+        <label class="content__main__user__information__data__letter">My email address is <br> <label class="content__main__user__information__data__letter__name">${findUser().email}</label></label>
+        `
+        userInfo.innerHTML = userMail;
+}
+
+function getAdress(){
+    let userAdress = ` 
+        <label class="content__main__user__information__data__letter">My addres is <br> <label class="content__main__user__information__data__letter__name">${findUser().address}</label></label>
+        `
+        userInfo.innerHTML = userAdress;
+}
+
+function getPhone(){
+    let userPhone = ` 
+        <label class="content__main__user__information__data__letter">My phone number is <br> <label class="content__main__user__information__data__letter__name">${findUser().phone}</label></label>
+        `
+        userInfo.innerHTML = userPhone;
+}
+
+function getPassword(){
+    let userPassword = ` 
+    <label class="content__main__user__information__data__letter">My password is <br> <label class="content__main__user__information__data__letter__name">${findUser().password}</label></label>
+    `
+    userInfo.innerHTML = userPassword;
+}
+
+findUser();
 getParameters();

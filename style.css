@@ -17,6 +17,7 @@ body{
     z-index:2;
     position: fixed;
     width: 100%;
+    box-shadow: 0px 6px 8px -2px rgba(130,130,130,0.6);
 }
 
 .navbar__brand__img{
@@ -36,7 +37,7 @@ body{
      border:none;
      outline: none;
      border-radius: 50px;
-     padding: 5px;
+     padding: 8px;
      padding-left: 40px;
      font-size: 16px;
      font-weight: bolder;
@@ -50,7 +51,7 @@ body{
     color:#aebb3f;
     position:absolute;
     left: 0;
-    top:5px;
+    top: 8px;
     padding: 0px 0px 0px 10px;
  }
  
@@ -75,8 +76,9 @@ body{
     position: fixed;
     color:#87868c;
 }
-.content__sidebar__list{
-    
+#list__all{
+    color:#aebb3f;
+    cursor: pointer;
 }
 
 .content__sidebar__list__item{
@@ -84,16 +86,70 @@ body{
     margin: 10px;
 }
 
-.content__sidebar__list__item:hover{
+#list__item__select{
     color:#aebb3f;
     cursor: pointer;
+}
+
+#list__item__no__select{
+    color:#87868c;
+    cursor: pointer;
+}
+
+.item_no_selected{
+    color:#87868c;
+    cursor: pointer;
+}
+
+.trash-selected{
+    color:#aebb3f;
+    cursor: pointer;
+}
+
+.attended-selected{
+    color:#aebb3f;
+    cursor: pointer;
+}
+
+
+.content__toast{
+    visibility: hidden;
+    position: fixed;
+    z-index: 2;
+}
+
+.toast_warning{
+    visibility: visible;
+    margin-top: 70px;
+    background-color: #dfa800;
+    color:#fff;
+    width: 250px;
+    padding: 10px;
+    position: fixed;
+    border-radius: 10px;
+    z-index: 2;
+    margin-left: 200px;
+    text-align: center;
+}
+.toast_success{
+    visibility: visible;
+    margin-top: 70px;
+    background-color: #9ec038;
+    color:#fff;
+    width: 250px;
+    padding: 10px;
+    position: fixed;
+    border-radius: 10px;
+    z-index: 2;
+    margin-left: 200px;
+    text-align: center;
 }
 
 .content__main{
     width: 100%;
     padding: 30px;
     margin-left: 200px;
-    margin-top: 60px;    
+    margin-top: 100px;    
 }
 
 .content__main__list{
@@ -113,6 +169,7 @@ body{
     justify-content: space-between;
     align-items: center;
     padding:15px;
+   
 }
 .content__main__list__row_user{
     width: 40%;
@@ -146,6 +203,35 @@ body{
     cursor: pointer;
 }
 
+.emptylist__modal{
+    height: 130px;
+    padding: 5px;
+    border: 1px solid #ffff55;
+    border-radius: 5px;
+    background-color: #fff3cd;
+    text-align: center;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.emptylist__modal__icon{
+    color: #e0ba1f;
+    margin-right: 20px;
+    
+}
+
+#icon_visible{
+   display: relative;
+}
+#icon_select{
+    color:#aebb3f;
+}
+#icon_invisible{
+    display: none;
+}
+
 .tooltiptext{
     width: 220px;
     background-color: #787878;
@@ -155,10 +241,8 @@ body{
     padding: 5px;
     position: absolute;
     z-index: 1;
-   
 }
 
-/* Telefones em paisagem a tablet em retrato */
 @media (max-width: 767px) {
     /* Inicio Estilos navbar */
     .navbar{
@@ -206,10 +290,7 @@ body{
         width: 60%;
         padding: 8px;
     }  
-    .content__main__list__row__photo{
-      display: none;
-    }
-
+    
     /*Inicio estilo sideBar*/
     .content__sidebar{
         display: none;
@@ -219,6 +300,20 @@ body{
         margin-top: 90px;
         position: absolute;
     }
+    .sidebar__show{
+        display:block;
+        width: 100%;
+        height: 130px;
+        margin: 0 auto;
+        margin-top: 90px;
+        position: absolute;
+        padding: 10px 0;
+        box-shadow: 2px 0px 4px 4px rgba(219,216,219,1);
+        font-size: 20px;
+        background-color:#ffffff;
+         z-index:1;
+        color:#87868c;
+    }
     .content__sidebar__list{
         list-style-type: none;
     }
@@ -226,15 +321,15 @@ body{
         padding: 5px 10px;
         margin: 10px;
     }
-}
+}     
 @media (min-width: 768px) and (max-width: 979px) {
     
     /* Inicio Estilos content*/
     .content__main{
-        width: 90%;
+        width: 100%;
         margin-left: 180px;
         position: relative;
-        padding: 10px;
+        padding: 20px;
        
     }
     .content__main__list{
@@ -242,7 +337,7 @@ body{
         margin: 0 auto;
     }
     .content__main__list__row{
-        width:100%;
+        width:98%;
         padding:3px;
         display: grid;
         grid-auto-flow: column;
@@ -264,9 +359,10 @@ body{
         width:160px;
         height: 100%;
     }
+    
 }
-@media(min-width: 980px) {
 
+@media(min-width: 980px) {
     /* Inicio Estilos content*/
     .content__main{
         position: relative;
